@@ -34,6 +34,8 @@ const hashStorage: HashStorage = (fn, options) => (set, get, api) => {
   };
 
   const getStateFromHash = () => {
+    if (typeof window === "undefined") return {};
+
     const hash = window.location.hash.slice(1);
 
     if (!hash) {
@@ -56,6 +58,8 @@ const hashStorage: HashStorage = (fn, options) => (set, get, api) => {
 
     encodedState = encodeURIComponent(encodedState);
 
+    if (typeof window === "undefined") return;
+
     window.location.hash = encodedState;
   };
 
@@ -64,7 +68,7 @@ const hashStorage: HashStorage = (fn, options) => (set, get, api) => {
   }
 
   // @ts-ignore
-  if (!api.__ZUSTAND_HASHSTORAGE_INIT__) {
+  if (!api.__ZUSTAND_HASHSTORAGE_INIT__ && typeof window !== "undefined") {
     // @ts-ignore
     api.__ZUSTAND_HASHSTORAGE_INIT__ = true;
 
