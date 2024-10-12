@@ -1,0 +1,33 @@
+{
+  "name": "zustand-hash-storage",
+  "module": "src/index.ts",
+  "type": "module",
+  "version": "1.0.0",
+  "author": {
+    "name": "Martin Petr",
+    "email": "martinpetrnp@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MartinGamesCZ/zustand-hash-storage"
+  },
+  "license": "MIT",
+  "scripts": {
+    "prepack": "rm -rf dist && bun build --minify --no-source-maps --outdir dist src/index.ts"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./dist/index.js"
+    }
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "zustand": "^5.0.0-rc.2"
+  }
+}
